@@ -1,0 +1,31 @@
+# /* **************************************************************************
+#  *                                                                          *
+#  *     (C) Copyright Paul Mensonides 2002.
+#  *     Distributed under the Boost Software License, Version 1.0. (See
+#  *     accompanying file LICENSE_1_0.txt or copy at
+#  *     http://www.boost.org/LICENSE_1_0.txt)
+#  *                                                                          *
+#  ************************************************************************** */
+#
+# /* See http://www.boost.org for most recent version. */
+#
+# ifndef NXL_PP_CONTROL_EXPR_IIF_H
+# define NXL_PP_CONTROL_EXPR_IIF_H
+#
+# include "nxl/pp/config/config.h"
+#
+# /* N_PP_EXPR_IIF */
+#
+# if ~N_PP_CONFIG_FLAGS() & N_PP_CONFIG_MWCC()
+#    define N_PP_EXPR_IIF(bit, expr) N_PP_EXPR_IIF_I(bit, expr)
+# else
+#    define N_PP_EXPR_IIF(bit, expr) N_PP_EXPR_IIF_OO((bit, expr))
+#    define N_PP_EXPR_IIF_OO(par) N_PP_EXPR_IIF_I ## par
+# endif
+#
+# define N_PP_EXPR_IIF_I(bit, expr) N_PP_EXPR_IIF_ ## bit(expr)
+#
+# define N_PP_EXPR_IIF_0(expr)
+# define N_PP_EXPR_IIF_1(expr) expr
+#
+# endif
