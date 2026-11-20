@@ -1,0 +1,19 @@
+# /* **************************************************************************
+#  *                                                                          *
+#  *     (C) Copyright Edward Diener 2020.                                    *
+#  *     Distributed under the Boost Software License, Version 1.0. (See      *
+#  *     accompanying file LICENSE_1_0.txt or copy at                         *
+#  *     http://www.boost.org/LICENSE_1_0.txt)                                *
+#  *                                                                          *
+#  ************************************************************************** */
+#
+# /* See http://www.boost.org for most recent version. */
+#
+# ifndef NXL_PP_ARITHMETIC_DETAIL_MAXIMUM_NUMBER_H
+# define NXL_PP_ARITHMETIC_DETAIL_MAXIMUM_NUMBER_H
+#
+# include "nxl/pp/config/limits.h"
+#
+# define N_PP_DETAIL_MAXIMUM_NUMBER N_PP_LIMIT_MAG
+#
+# endif

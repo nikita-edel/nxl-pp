@@ -11,12 +11,12 @@
 #
 # /* See http://www.boost.org for most recent version. */
 #
-# ifndef BOOST_LIBS_PREPROCESSOR_REGRESSION_TEST_MACRO_H
-# define BOOST_LIBS_PREPROCESSOR_REGRESSION_TEST_MACRO_H
+# ifndef NXL_LIBS_PREPROCESSOR_REGRESSION_TEST_MACRO_H
+# define NXL_LIBS_PREPROCESSOR_REGRESSION_TEST_MACRO_H
 #
-# include <boost/preprocessor/cat.hpp>
+# include "nxl/pp/cat.h"
 #
-# define BEGIN typedef int BOOST_PP_CAT(test_, __LINE__)[((
+# define BEGIN typedef int N_PP_CAT(test_, __LINE__)[((
 # define END )==1) ? 1 : -1];
 #
 # endif

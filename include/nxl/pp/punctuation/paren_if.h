@@ -1,0 +1,38 @@
+# /* **************************************************************************
+#  *                                                                          *
+#  *     (C) Copyright Paul Mensonides 2002.
+#  *     Distributed under the Boost Software License, Version 1.0. (See
+#  *     accompanying file LICENSE_1_0.txt or copy at
+#  *     http://www.boost.org/LICENSE_1_0.txt)
+#  *                                                                          *
+#  ************************************************************************** */
+#
+# /* See http://www.boost.org for most recent version. */
+#
+# ifndef NXL_PP_PUNCTUATION_PAREN_IF_H
+# define NXL_PP_PUNCTUATION_PAREN_IF_H
+#
+# include "nxl/pp/config/config.h"
+# include "nxl/pp/control/if.h"
+# include "nxl/pp/facilities/empty.h"
+# include "nxl/pp/punctuation/paren.h"
+#
+# /* N_PP_LPAREN_IF */
+#
+# if ~N_PP_CONFIG_FLAGS() & N_PP_CONFIG_EDG()
+#    define N_PP_LPAREN_IF(cond) N_PP_IF(cond, N_PP_LPAREN, N_PP_EMPTY)()
+# else
+#    define N_PP_LPAREN_IF(cond) N_PP_LPAREN_IF_I(cond)
+#    define N_PP_LPAREN_IF_I(cond) N_PP_IF(cond, N_PP_LPAREN, N_PP_EMPTY)()
+# endif
+#
+# /* N_PP_RPAREN_IF */
+#
+# if ~N_PP_CONFIG_FLAGS() & N_PP_CONFIG_EDG()
+#    define N_PP_RPAREN_IF(cond) N_PP_IF(cond, N_PP_RPAREN, N_PP_EMPTY)()
+# else
+#    define N_PP_RPAREN_IF(cond) N_PP_RPAREN_IF_I(cond)
+#    define N_PP_RPAREN_IF_I(cond) N_PP_IF(cond, N_PP_RPAREN, N_PP_EMPTY)()
+# endif
+#
+# endif

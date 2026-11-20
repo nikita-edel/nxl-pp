@@ -9,39 +9,39 @@
 #
 # /* See http://www.boost.org for most recent version. */
 #
-# include <boost/preprocessor/config/limits.hpp>
+# include "nxl/pp/config/limits.h"
 #
-# if !BOOST_PP_IS_SELFISH
+# if !N_PP_IS_SELFISH
 #
 # include "iteration.h"
 #
 # define TEST(n) BEGIN n == n END
 #
-# define BOOST_PP_LOCAL_MACRO(n) TEST(n)
-# define BOOST_PP_LOCAL_LIMITS (1, 5)
-# include BOOST_PP_LOCAL_ITERATE()
+# define N_PP_LOCAL_MACRO(n) TEST(n)
+# define N_PP_LOCAL_LIMITS (1, 5)
+# include N_PP_LOCAL_ITERATE()
 #
-# define BOOST_PP_LOCAL_MACRO(n) TEST(n)
-# define BOOST_PP_LOCAL_LIMITS (5, 1)
-# include BOOST_PP_LOCAL_ITERATE()
+# define N_PP_LOCAL_MACRO(n) TEST(n)
+# define N_PP_LOCAL_LIMITS (5, 1)
+# include N_PP_LOCAL_ITERATE()
 #
-# if BOOST_PP_LIMIT_ITERATION != 256
+# if N_PP_LIMIT_ITERATION != 256
 #
-# define BOOST_PP_LOCAL_MACRO(n) int BOOST_PP_CAT(int_li_f_,n) = n ;
-# define BOOST_PP_LOCAL_LIMITS (0, BOOST_PP_LIMIT_ITERATION)
-# include BOOST_PP_LOCAL_ITERATE()
+# define N_PP_LOCAL_MACRO(n) int N_PP_CAT(int_li_f_,n) = n ;
+# define N_PP_LOCAL_LIMITS (0, N_PP_LIMIT_ITERATION)
+# include N_PP_LOCAL_ITERATE()
 #
-# define BOOST_PP_LOCAL_MACRO(n) int BOOST_PP_CAT(int_li_r_,n) = n ;
-# define BOOST_PP_LOCAL_LIMITS (BOOST_PP_LIMIT_ITERATION, 0)
-# include BOOST_PP_LOCAL_ITERATE()
+# define N_PP_LOCAL_MACRO(n) int N_PP_CAT(int_li_r_,n) = n ;
+# define N_PP_LOCAL_LIMITS (N_PP_LIMIT_ITERATION, 0)
+# include N_PP_LOCAL_ITERATE()
 #
 # endif
 #
-# define BOOST_PP_INDIRECT_SELF "iteration.cpp"
-# include BOOST_PP_INCLUDE_SELF()
+# define N_PP_INDIRECT_SELF "iteration.cpp"
+# include N_PP_INCLUDE_SELF()
 #
 # else
 
-BEGIN BOOST_PP_IS_SELFISH == 1 END
+BEGIN N_PP_IS_SELFISH == 1 END
 
 # endif

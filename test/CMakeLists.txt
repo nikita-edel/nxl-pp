@@ -2,39 +2,55 @@
 # Distributed under the Boost Software License, Version 1.0.
 # See accompanying file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt
 
-include(BoostTest OPTIONAL RESULT_VARIABLE HAVE_BOOST_TEST)
+list(APPEND CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/.boost-cmake/include")
 
-if(NOT HAVE_BOOST_TEST)
-  return()
+include(BoostTest OPTIONAL RESULT_VARIABLE HAVE_NXL_TEST)
+
+if(NOT HAVE_NXL_TEST)
+	return()
 endif()
 
 enable_language(C)
 
-set(tests_common arithmetic array comparison control debug facilities list logical punctuation selection seq slot stringize tuple variadic isempty)
-set(tests_common_fail isempty_variadic_standard_failure isempty_variadic_standard_failure2)
-set(tests_c ${tests_common})
-set(tests_cpp ${tests_common} iteration repetition checkempty vaopt quick)
+set(tests_c
+	arithmetic
+	array
+	comparison
+	control
+	debug
+	facilities
+	list
+	logical
+	punctuation
+	selection
+	seq
+	slot
+	stringize
+	tuple
+	variadic
+	isempty
+)
+
+set(tests_c_fail
+	isempty_variadic_standard_failure
+	isempty_variadic_standard_failure2
+)
 
 set(BOOST_TEST_LINK_LIBRARIES Boost::preprocessor)
 set(BOOST_TEST_INCLUDE_DIRECTORIES .)
 
 foreach(test IN LISTS tests_c)
-
-  boost_test(TYPE compile SOURCES ${test}.c NAME ${test}_c)
-
+	boost_test(
+		TYPE compile
+		SOURCES ${test}.c
+		NAME ${test}_c
+	)
 endforeach()
 
-foreach(test IN LISTS tests_cpp)
-
-  boost_test(TYPE compile SOURCES ${test}.cpp)
-
+foreach(test IN LISTS tests_c_fail)
+	boost_test(
+		TYPE compile-fail
+		SOURCES ${test}.c
+		NAME ${test}_c
+	)
 endforeach()
-
-foreach(test IN LISTS tests_common_fail)
-
-  boost_test(TYPE compile-fail SOURCES ${test}.c NAME ${test}_c)
-  boost_test(TYPE compile-fail SOURCES ${test}.cpp)
-
-endforeach()
-
-boost_test(TYPE run SOURCES config_info.cpp)

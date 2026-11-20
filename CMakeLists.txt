@@ -4,15 +4,27 @@
 
 cmake_minimum_required(VERSION 3.5...3.16)
 
-project(boost_preprocessor VERSION "${BOOST_SUPERPROJECT_VERSION}" LANGUAGES CXX)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+set(CMAKE_C_STANDARD 23)
+set(CMAKE_C_STANDARD_REQUIRED ON)
+
+project(
+	boost_preprocessor
+	VERSION "${NXL_SUPERPROJECT_VERSION}"
+	LANGUAGES C
+)
+
+include(CTest)
 
 add_library(boost_preprocessor INTERFACE)
 add_library(Boost::preprocessor ALIAS boost_preprocessor)
 
-target_include_directories(boost_preprocessor INTERFACE include)
+target_include_directories(
+	boost_preprocessor
+	INTERFACE
+		include
+)
 
 if(BUILD_TESTING)
-
-  add_subdirectory(test)
-
+	add_subdirectory(test)
 endif()

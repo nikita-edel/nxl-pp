@@ -1,0 +1,75 @@
+# /* Copyright (C) 2001
+#  * Housemarque Oy
+#  * http://www.housemarque.com
+#  *
+#  * Distributed under the Boost Software License, Version 1.0. (See
+#  * accompanying file LICENSE_1_0.txt or copy at
+#  * http://www.boost.org/LICENSE_1_0.txt)
+#  */
+#
+# /* Revised by Paul Mensonides (2002) */
+# /* Revised by Edward Diener (2020) */
+#
+# /* See http://www.boost.org for most recent version. */
+#
+# ifndef NXL_PP_ARITHMETIC_DIV_H
+# define NXL_PP_ARITHMETIC_DIV_H
+#
+# include "nxl/pp/config/config.h"
+#
+# if ~N_PP_CONFIG_FLAGS() & N_PP_CONFIG_STRICT()
+#
+# include "nxl/pp/arithmetic/detail/div_base.h"
+# include "nxl/pp/tuple/elem.h"
+#
+# /* N_PP_DIV */
+#
+# if ~N_PP_CONFIG_FLAGS() & N_PP_CONFIG_EDG()
+#    define N_PP_DIV(x, y) N_PP_TUPLE_ELEM(3, 0, N_PP_DIV_BASE(x, y))
+# else
+#    define N_PP_DIV(x, y) N_PP_DIV_I(x, y)
+#    define N_PP_DIV_I(x, y) N_PP_TUPLE_ELEM(3, 0, N_PP_DIV_BASE(x, y))
+# endif
+#
+# /* N_PP_DIV_D */
+#
+# if ~N_PP_CONFIG_FLAGS() & N_PP_CONFIG_EDG()
+#    define N_PP_DIV_D(d, x, y) N_PP_TUPLE_ELEM(3, 0, N_PP_DIV_BASE_D(d, x, y))
+# else
+#    define N_PP_DIV_D(d, x, y) N_PP_DIV_D_I(d, x, y)
+#    define N_PP_DIV_D_I(d, x, y) N_PP_TUPLE_ELEM(3, 0, N_PP_DIV_BASE_D(d, x, y))
+# endif
+#
+# else
+#
+# include "nxl/pp/arithmetic/detail/div_base.h"
+# include "nxl/pp/control/iif.h"
+# include "nxl/pp/facilities/identity.h"
+# include "nxl/pp/tuple/elem.h"
+# include "nxl/pp/arithmetic/detail/is_1_number.h"
+#
+# /* N_PP_DIV */
+#
+#    define N_PP_DIV(x, y) N_PP_IIF(N_PP_DETAIL_IS_1_NUMBER(y),N_PP_IDENTITY_N(x,2),N_PP_DIV_DO)(x,y)
+#
+# if ~N_PP_CONFIG_FLAGS() & N_PP_CONFIG_EDG()
+#    define N_PP_DIV_DO(x, y) N_PP_TUPLE_ELEM(3, 0, N_PP_DIV_BASE(x, y))
+# else
+#    define N_PP_DIV_DO(x, y) N_PP_DIV_I(x, y)
+#    define N_PP_DIV_I(x, y) N_PP_TUPLE_ELEM(3, 0, N_PP_DIV_BASE(x, y))
+# endif
+#
+# /* N_PP_DIV_D */
+#
+#    define N_PP_DIV_D(d, x, y) N_PP_IIF(N_PP_DETAIL_IS_1_NUMBER(y),N_PP_IDENTITY_N(x,3),N_PP_DIV_DO_D)(d,x,y)
+#
+# if ~N_PP_CONFIG_FLAGS() & N_PP_CONFIG_EDG()
+#    define N_PP_DIV_DO_D(d, x, y) N_PP_TUPLE_ELEM(3, 0, N_PP_DIV_BASE_D(d, x, y))
+# else
+#    define N_PP_DIV_DO_D(d, x, y) N_PP_DIV_D_I(d, x, y)
+#    define N_PP_DIV_D_I(d, x, y) N_PP_TUPLE_ELEM(3, 0, N_PP_DIV_BASE_D(d, x, y))
+# endif
+#
+# endif
+#
+# endif

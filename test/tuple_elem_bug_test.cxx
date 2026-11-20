@@ -9,24 +9,24 @@
 #
 # /* See http://www.boost.org for most recent version. */
 #
-# include <boost/preprocessor/cat.hpp>
-# include <boost/preprocessor/control/if.hpp>
-# include <boost/preprocessor/tuple.hpp>
+# include "nxl/pp/cat.h"
+# include "nxl/pp/control/if.h"
+# include "nxl/pp/tuple.h"
 # include "test.h"
 
 #define TN_GEN_ONE(p) (1)
 #define TN_GEN_ZERO(p) (0)
 #define TN_TEST_ONE_MORE(parameter,ens) \
-        BOOST_PP_IF \
+        N_PP_IF \
             ( \
-            BOOST_PP_CAT(BOOST_PP_TUPLE_ELEM(1,0,ens),0), \
+            N_PP_CAT(N_PP_TUPLE_ELEM(1,0,ens),0), \
             TN_GEN_ONE, \
             TN_GEN_ZERO \
             ) \
         (parameter) \
 /**/
 #define TN_TEST_ONE(parameter,ens) \
-    BOOST_PP_TUPLE_ELEM \
+    N_PP_TUPLE_ELEM \
         ( \
         1, \
         0, \

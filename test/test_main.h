@@ -11,8 +11,8 @@
 #
 # /* See http://www.boost.org for most recent version. */
 #
-# ifndef BOOST_LIBS_PREPROCESSOR_REGRESSION_TEST_MAIN_H
-# define BOOST_LIBS_PREPROCESSOR_REGRESSION_TEST_MAIN_H
+# ifndef NXL_LIBS_PREPROCESSOR_REGRESSION_TEST_MAIN_H
+# define NXL_LIBS_PREPROCESSOR_REGRESSION_TEST_MAIN_H
 #
 #if defined(__cplusplus)
 #include <cstdio>

@@ -9,45 +9,45 @@
 #
 # /* See http://www.boost.org for most recent version. */
 #
-# include <boost/preprocessor/slot.hpp>
+# include "nxl/pp/slot.h"
 # include "test.h"
-# include <boost/preprocessor/slot/counter.hpp>
+# include "nxl/pp/slot/counter.h"
 
 # define X() 4
 
-# define BOOST_PP_VALUE 1 + 2 + 3 + X()
-# include BOOST_PP_ASSIGN_SLOT(1)
+# define N_PP_VALUE 1 + 2 + 3 + X()
+# include N_PP_ASSIGN_SLOT(1)
 
 # undef X
 
-BEGIN BOOST_PP_SLOT(1) == 10 END
+BEGIN N_PP_SLOT(1) == 10 END
 
-# define BOOST_PP_VALUE BOOST_PP_SLOT(1) * BOOST_PP_SLOT(1)
-# include BOOST_PP_ASSIGN_SLOT(1)
+# define N_PP_VALUE N_PP_SLOT(1) * N_PP_SLOT(1)
+# include N_PP_ASSIGN_SLOT(1)
 
-BEGIN BOOST_PP_SLOT(1) == 100 END
+BEGIN N_PP_SLOT(1) == 100 END
 
-BEGIN BOOST_PP_COUNTER == 0 END
+BEGIN N_PP_COUNTER == 0 END
 
-#include BOOST_PP_UPDATE_COUNTER()
+#include N_PP_UPDATE_COUNTER()
 
-BEGIN BOOST_PP_COUNTER == 1 END
+BEGIN N_PP_COUNTER == 1 END
 
-#include BOOST_PP_UPDATE_COUNTER()
-#include BOOST_PP_UPDATE_COUNTER()
+#include N_PP_UPDATE_COUNTER()
+#include N_PP_UPDATE_COUNTER()
 
-BEGIN BOOST_PP_COUNTER == 3 END
+BEGIN N_PP_COUNTER == 3 END
 
-#include BOOST_PP_UPDATE_COUNTER()
-#include BOOST_PP_UPDATE_COUNTER()
-#include BOOST_PP_UPDATE_COUNTER()
+#include N_PP_UPDATE_COUNTER()
+#include N_PP_UPDATE_COUNTER()
+#include N_PP_UPDATE_COUNTER()
 
-BEGIN BOOST_PP_COUNTER == 6 END
+BEGIN N_PP_COUNTER == 6 END
 
-#include BOOST_PP_UPDATE_COUNTER()
-#include BOOST_PP_UPDATE_COUNTER()
-#include BOOST_PP_UPDATE_COUNTER()
-#include BOOST_PP_UPDATE_COUNTER()
-#include BOOST_PP_UPDATE_COUNTER()
+#include N_PP_UPDATE_COUNTER()
+#include N_PP_UPDATE_COUNTER()
+#include N_PP_UPDATE_COUNTER()
+#include N_PP_UPDATE_COUNTER()
+#include N_PP_UPDATE_COUNTER()
 
-BEGIN BOOST_PP_COUNTER == 11 END
+BEGIN N_PP_COUNTER == 11 END
