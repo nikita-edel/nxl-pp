@@ -1,3 +1,4 @@
+#!/bin/sh
 ./script/setup.sh
 
 cmake --build build --target tests --parallel

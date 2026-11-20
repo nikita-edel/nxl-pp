@@ -34,7 +34,8 @@
 /**/
 #define N_PP_IS_EMPTY_ZERO(param) 0
 # else
-# if defined(__cplusplus) && __cplusplus > 201703L
+# if (defined(__cplusplus) && __cplusplus > 201703L) || \
+     (defined(__STDC_VERSION__) && __STDC_VERSION__ >= 202311L)
 # include "nxl/pp/variadic/has_opt.h"
 #define N_PP_IS_EMPTY(...) \
     N_PP_DETAIL_IS_EMPTY_IIF \
@@ -60,7 +61,7 @@
 #define N_PP_IS_EMPTY(...) \
     N_PP_IS_EMPTY_NO_OPT(__VA_ARGS__) \
 /**/
-# endif /* defined(__cplusplus) && __cplusplus > 201703L */
+# endif /* C++20 or C23 */
 #define N_PP_IS_EMPTY_NO_OPT(...) \
     N_PP_DETAIL_IS_EMPTY_IIF \
       ( \

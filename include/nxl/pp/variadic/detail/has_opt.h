@@ -14,7 +14,8 @@
 #
 # include "nxl/pp/config/config.h"
 #
-# if defined(__cplusplus) && __cplusplus > 201703L
+# if (defined(__cplusplus) && __cplusplus > 201703L) || \
+     (defined(__STDC_VERSION__) && __STDC_VERSION__ >= 202311L)
 #
 # if N_PP_VARIADICS_MSVC
 # include "nxl/pp/cat.h"

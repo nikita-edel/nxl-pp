@@ -16,7 +16,8 @@
 
 #define FUNC_GEN8(x,y) (1,2,3)
 
-#if defined(__cplusplus) && __cplusplus > 201703L
+#if (defined(__cplusplus) && __cplusplus > 201703L) || \
+    (defined(__STDC_VERSION__) && __STDC_VERSION__ >= 202311L)
   
 # include "nxl/pp/variadic/has_opt.h"
 

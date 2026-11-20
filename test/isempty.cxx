@@ -38,7 +38,7 @@
 
 # include "nxl/pp/variadic/has_opt.h"
 
-#if defined(__cplusplus) && __cplusplus > 201703L && N_PP_VARIADIC_HAS_OPT()
+#if N_PP_VARIADIC_HAS_OPT()
 
 BEGIN N_PP_IS_EMPTY(FUNC_GEN) == 0 END
 BEGIN N_PP_IS_EMPTY(FUNC_GEN2) == 0 END
